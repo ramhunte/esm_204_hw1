@@ -1,0 +1,322 @@
+---
+title: "hw1"
+author: "Ray Hunter"
+date: "2023-04-10"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+library(janitor)
+library(ggplot2)
+library(pracma)
+```
+
+### 1. Basics of R
+
+#### a
+```{r}
+# a. Launch R Studio and start a new R script. Write a computer program that counts
+# from 1 to 10 by 0.5 increments. Print out the results.
+
+
+seq(1,10, length.out = 19)
+```
+
+#### b
+```{r}
+# b. Write a function. Your function should have three inputs (X, a, and b) and one
+# output (Y). The function should calculate Y = a*X + b. Call your function for the values X=5, b=10, a=3. What value of Y did you get? Confirm algebraically that it is correct.
+
+
+func_hw1 <- function(x, a, b) {
+   y <- a*x + b
+  return(y)
+}
+
+func_hw1(5,3,10)
+
+# Answer: y = 25
+```
+
+
+#### c
+
+```{r}
+# c. Build a dataframe. Your dataframe is going to call your function from above. We are going to fix a=3 and b=10, and we would like the dataframe to evaluate the function for integer values of X between 0 and 10. The columns of your dataframe should be: a, b, X, and Y. Print the resulting dataframe.
+
+
+a<-3
+b<-10
+x<- seq(0,10)
+
+df1 <- as.data.frame(list(a=a, b=b, x=x, y = func_hw1(x,a,b)))
+print(df1)
+```
+
+
+
+#### d
+```{r}
+# d. Plot using your dataframe. Use ggplot to plot Y (vertical axis) against X (horizontal axis) from your dataframe.
+
+
+
+ggplot(df1, aes(x=x, y=y)) +
+geom_point() + 
+  geom_line() +
+  theme_minimal()
+```
+
+
+#### e
+```{r}
+# e. Find the intersection of two curves. Use the function fzero (from the pracma package) or uniroot (from the stats package) to find where two curves cross. The twocurvesare:(1)Y=a1*X+b1 and(2)Y=a2*X+b2. Foranyvaluesofa1, b1, a2, and b2, we want to know the value of X and Y where these functions cross. Follow these steps:
+
+# i. Write a function called F1 that takes X, a1, and b1 as inputs and delivers Y=a1*X + b1 as the output. This is almost exactly the same as in part (b) above.
+
+
+F1 <- function(x,a1,b1){
+  y <- a1*x + b1
+  return(y)
+}
+
+
+
+
+# ii. Write a different function called F2 that takes X, a2, and b2 as inputs and delivers Y=a2*X + b2 as the output.
+
+F2 <- function(x,a2,b2){
+  y <- a2*x + b2
+  return(y)
+}
+
+
+
+# iii. Write a third function that takes the following inputs: X, a1, b1, a2, and b2. This new function will call F1 and F2. The output is Z=F1-F2 (in other words, for any value of X, Z is the difference between the two functions.
+
+
+F3 <- function(x, a1, b1, a2, b2){
+  z<- F1(x,a1,b1)-F2(x,a2,b2)
+  return(z)
+}
+
+
+
+
+
+# iv. Use fzero to find X* and Y* for the following values of the parameters: a1=-2, b1=100, a2=3, b2=0.
+
+
+
+
+fzero(function(x) F3(x, a1=-2, b1=100, a2=3, b2=0), 10)
+```
+
+#### f
+```{r}
+# f. Use algebra to confirm that your answer to (e) is correct.
+```
+
+
+
+
+
+
+### 2. Food Bank Markets:
+
+#### a. 
+Recall the NPR story, where food banks around the country can buy and sell
+surplus food in a new kind of market. Consider the supply and demand for peanut butter (the story indicated that it is particularly valuable in this market). In this market there are food banks who have surplus peanut butter and food banks that want more peanut butter. The currency is “credits” (not “dollars”). The demand curve for peanut butter is given by P = 400 - .05Q (where P has units “credits per jar” and Q has units “jars” of peanut butter). The supply of peanut butter is P = 20 + .05Q. 
+
+What do you predict would be the equilibrium price and quantity of peanut butter that would be traded? 
+
+
+demand
+P = 400 - .05Q
+Q = 8000 - P/.05
+
+supply
+P = 20 + .05Q
+Q = P/.05 - 400
+
+
+
+
+**Equilibrium Quantity**
+400 - 0.05Q = 20 + 0.05Q
+**Q= 3800**
+
+**Equilibrium Price**
+8000 - P/.05 = P/.05 - 400
+2P/.05 = 8400
+**P = 210**
+
+
+How would you measure the benefit of the new market to food banks that buy peanut butter? How would you measure the benefit of the new market to food banks that sell peanut butter?
+
+
+
+
+
+
+#### b. 
+Suppose there is also an externality of the trade in peanut butter (reflecting the idea of “food miles”). Each jar of peanut butter that is transacted imposes an externality that is the equivalent of 50 credits. For example, if 20 jars are sold from one food bank to another, then there is a climate cost equivalent to 1000 credits. Do you think this new information should change the amount of trade by food banks? Can you design a change to the food bank market that would perfectly account for this externality? What would be the new equilibrium price and quantity.
+
+
+**This information which significantly shift consumer demand as the price of the product would increase. We account for this by adding 50Q, or 50 credits per jar, to the supply equation. The demand equation stays the same because they still want peanut butter at a certain cost, but the supply equation changes as there is an increased externality which has to be incorporated into the price of the peanut butter.** 
+
+
+
+
+demand (stays the same) 
+P = 400 - .05Q
+Q = 8000 - P/.05
+
+supply (increases by 50 credits per jar)
+P = 20 + .05Q + 50Q
+Q = P/50.05 - 20/50.05
+
+
+
+
+**Equilibrium Quantity**
+400 - 0.05Q = 20 + 50.05Q
+380 = 50.1Q
+**Q= 7.584**
+
+**Equilibrium Supply**
+8000 - P/.05 = P/50.05 - 20/50.05
+8000 + 20/50.05 = 1,001P/50.05 + P/50.05
+50.05(8000 + 20/50.05)/1002 = P
+**P = 399.6**
+
+
+
+### 3. Use R to solve more complicated supply and demand problems1
+
+
+
+#### a 
+```{r}
+#a. Old cars are often fuel inefficient. The supply of inefficient old cars is given by:
+
+
+# P = 120 + 0.3Q^1.3 
+# 
+# (where P is price/car and Q is the quantity of cars). The state of California offers a “cash for clunker” program, where they will pay $1000 for any inefficient old car. Answer the following questions:
+#
+```
+
+#### i
+```{r}
+# i. Use R to determine how many cars will be sold back to the state under this program.
+
+supp <- function(Q, I1 = 120, a1 = 0.3, b1 = 1.3){
+  
+  P = I1 + a1*(Q^b1)
+  return(P)
+}
+
+
+dem <- function(Q, I2 = 1000, a2 = 0, b2=1){
+  
+  P =  I2 + a2*(Q^b2)
+  return(P)
+}
+
+
+diff <- function(Q, I1, a1, b1, I2, a2, b2){
+  difference = supp(Q, I1, a1, b1) - dem(Q, I2, a2, b2)
+  return(difference)
+}
+
+
+
+
+quant <- fzero(function(Q) diff(Q, I1 = 120, a1 = 0.3, b1 = 1.3, I2 = 1000, a2= 0, b2=1), 500)
+
+car_count <- quant[[1]]
+car_count
+```
+**About 465 cars will be sold back to the state at the price of $1,000 per vehicle.**
+
+
+#### ii. 
+
+```{r}
+# Use R to calculate the elasticity of supply of inefficient cars.
+
+
+elasticity <- ((supp(201) - supp(200))/(supp(200))) / ((201 - 200)/(200))
+print(elasticity)
+```
+**the elasticity of the supply of inefficeint cars is 0.92 when the quantity changes from 200 to 201**
+
+#### iii.
+What are benefits of this policy to owners of old cars?
+
+**Their car may be worth less than $1000, or they are willing to sell their cars for less than what the state offers, so they are receiving more than they may have gotten otherwise.**
+
+
+#### iv. 
+What is the cost of this program to taxpayers?
+
+**They have to pay for vehicles that other people are trying to get rid of. The tax payer dollars are going towards individuals that might not need the state money and are "freeriding" **
+
+
+#### b. 
+Suppose the marginal benefit of removing old cars (environmental, health, etc) is given by: TB = 1500 – .04Q1.2 (where Q is the number of cars bought back under the program).
+
+
+#### i
+```{r}
+# Use R to find the socially optimal number of cars to remove.
+
+marg_ben <- function(Q, I3 = 1500, a3 = .04, b3 = 1.2){
+  mb = 1500 - .04*Q^1.2  
+  return(mb) 
+}
+
+
+
+
+diff2 <- function(Q, I1, a1, b1, I3, a3, b3){
+  diff = supp(Q, I1, a1, b1) - marg_ben(Q, I3, a3, b3)
+  return(diff)
+}
+
+
+
+
+quant2 <- fzero(function(Q) diff2(Q, I1 = 120, a1 = 0.3, b1 = 1.3, I3 = 1500, a3 = .04, b3 = 1.2), 500)
+print(quant2[1])
+```
+**The socially optimal number of cars to remove would be 623.57 cars. With the added environmental health benefits from removing cars, the demand has increased for selling cars so more individuals are wiling to sell their cars for a higher price**  
+
+
+#### ii. 
+
+```{r}
+# Use R to find the optimal “cash for clunkers” subsidy (which may differ from the current subsidy of $1000).
+
+
+print(marg_ben(623.5703))
+```
+**The optimal "cash for clunkers" subsidy should be $1,409.65 as the demand for trading in used cars and better health/environmental quality is high**
+
+
+
+
+
+
+
+
+
+
+
+
+
+
