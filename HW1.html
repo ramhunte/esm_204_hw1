@@ -467,16 +467,26 @@ F3 &lt;- function(x, a1, b1, a2, b2){
 
 
 
-fzero(function(x) F3(x, a1=-2, b1=100, a2=3, b2=0), 10)</code></pre>
-<pre><code>## $x
-## [1] 20
-## 
-## $fval
-## [1] 0</code></pre>
+fzero(function(x) F3(x, a1=-2, b1=100, a2=3, b2=0), 10)$x</code></pre>
+<pre><code>## [1] 20</code></pre>
+<pre class="r"><code># a1 = -2
+# b1 = 100
+# a2 = 3
+# b2=0
+# 
+# 
+# fzero(fun = F3, 10, a1=a1, b1=b1, a2=a2, b2=b2)</code></pre>
+<p>The X* = 0</p>
+<p>Y* = 60</p>
+<p>This was found by taking the fzero() of the difference of supply and
+demand using the difference function that I created. Once the value at
+where y = 0 was found (x = 20), then x=20 was plugged into both the F1
+and F2 functions to find the Y* which is equal to 60.</p>
 </div>
 <div id="f" class="section level4">
 <h4>f</h4>
 <pre class="r"><code># f. Use algebra to confirm that your answer to (e) is correct.</code></pre>
+<p>algebra was used to confirm that the answer is correct</p>
 </div>
 </div>
 <div id="food-bank-markets" class="section level3">
@@ -494,15 +504,24 @@ and Q has units “jars” of peanut butter). The supply of peanut butter is
 P = 20 + .05Q.</p>
 <p>What do you predict would be the equilibrium price and quantity of
 peanut butter that would be traded?</p>
-<p>demand P = 400 - .05Q Q = 8000 - P/.05</p>
-<p>supply P = 20 + .05Q Q = P/.05 - 400</p>
-<p><strong>Equilibrium Quantity</strong> 400 - 0.05Q = 20 + 0.05Q
-<strong>Q= 3800</strong></p>
-<p><strong>Equilibrium Supply</strong> 8000 - P/.05 = P/.05 - 400 2P/.05
-= 8400 <strong>P = 210</strong></p>
+<p><strong>Demand</strong> <span class="math display">\[P = 400 -
+.05Q\]</span> <span class="math display">\[Q = 8000 - P/.05\]</span></p>
+<p><strong>Supply</strong> <span class="math display">\[P = 20 +
+.05Q\]</span> <span class="math display">\[Q = P/.05 - 400\]</span></p>
+<p><strong>Equilibrium Quantity</strong> <span class="math display">\[400 - 0.05Q = 20 + 0.05Q\]</span> <span class="math display">\[Q= 3800\]</span></p>
+<p><strong>Equilibrium Price</strong> <span class="math display">\[8000
+- P/.05 = P/.05 - 400\]</span> <span class="math display">\[2P/.05 =
+8400\]</span> <span class="math display">\[P = 210\]</span></p>
 <p>How would you measure the benefit of the new market to food banks
 that buy peanut butter? How would you measure the benefit of the new
 market to food banks that sell peanut butter?</p>
+<p><strong>You would measure the benefit of the new market to food banks
+that buy peanut butter by measuring the triangular area above the
+equilibrium price line (P star) and below demand curve. This area would
+result in the total price benefit to the food banks that buy. To measure
+the benefit of the new market to food banks that sell peanut butter, you
+would measure the triangular area below the equilibrium price line (P
+star) and above the supply curve.</strong></p>
 </div>
 <div id="b." class="section level4">
 <h4>b.</h4>
@@ -517,19 +536,19 @@ this externality? What would be the new equilibrium price and
 quantity.</p>
 <p><strong>This information which significantly shift consumer demand as
 the price of the product would increase. We account for this by adding
-50Q, or 50 credits per jar, to the supply equation. The demand equation
-stays the same because they still want peanut butter at a certain cost,
-but the supply equation changes as there is an increased externality
-which has to be incorporated into the price of the peanut
-butter.</strong></p>
-<p>demand (stays the same) P = 400 - .05Q Q = 8000 - P/.05</p>
-<p>supply (increases by 50 credits per jar) P = 20 + .05Q + 50Q Q =
-P/50.05 - 20/50.05</p>
-<p><strong>Equilibrium Quantity</strong> 400 - 0.05Q = 20 + 50.05Q 380 =
-50.1Q <strong>Q= 7.584</strong></p>
-<p><strong>Equilibrium Supply</strong> 8000 - P/.05 = P/50.05 - 20/50.05
-8000 + 20/50.05 = 1,001P/50.05 + P/50.05 50.05(8000 + 20/50.05)/1002 = P
-<strong>P = 399.6</strong></p>
+50 credits per jar to the supply equation which results in the supply
+curve shifting up. The demand equation stays the same because they still
+want peanut butter at a certain cost, therefore the demand curve stays
+put. This increase in price of the jars would result in a shift in the
+equilibrium point in which consumers are going to buy less jars due.
+</strong></p>
+<p><strong>Demand (stays the same)</strong> <span class="math display">\[P = 400 - .05Q\]</span> <span class="math display">\[Q = 8000 - P/.05\]</span></p>
+<p><strong>Supply (increases by 50 credits per jar)</strong> <span class="math display">\[P = 70 + .05Q\]</span> <span class="math display">\[Q = P/.05 - 1400\]</span></p>
+<p><strong>Equilibrium Quantity</strong> <span class="math display">\[400 - 0.05Q = 70 + .05Q\]</span> <span class="math display">\[330 = .1Q\]</span> <span class="math display">\[Q= 3300\]</span></p>
+<p><strong>Equilibrium Supply</strong> <span class="math display">\[8000
+- P/.05 = P/.05 - 1400\]</span> <span class="math display">\[8000 + 1400
+= 2P/.05\]</span> <span class="math display">\[(9400 * .05)/2 =
+P\]</span> <span class="math display">\[P = 235**\]</span></p>
 </div>
 </div>
 <div id="use-r-to-solve-more-complicated-supply-and-demand-problems1" class="section level3">
@@ -570,36 +589,41 @@ diff &lt;- function(Q, I1, a1, b1, I2, a2, b2){
 
 
 
-quant &lt;- fzero(function(Q) diff(Q, I1 = 120, a1 = 0.3, b1 = 1.3, I2 = 1000, a2= 0, b2=1), 500)
+car_count1 &lt;- fzero(function(Q) diff(Q, I1 = 120, a1 = 0.3, b1 = 1.3, I2 = 1000, a2= 0, b2=1), 500)$x
+car_count2 &lt;- fzero(function(Q) diff(Q, I1 = 120, a1 = 0.3, b1 = 1.3, I2 = 1001, a2= 0, b2=1), 500)$x
 
-car_count &lt;- quant[[1]]
-car_count</code></pre>
+# car_count1 &lt;- quant1[[1]]
+# car_count2 &lt;- quant2[[1]]
+car_count1</code></pre>
 <pre><code>## [1] 464.7304</code></pre>
-<p><strong>About 464.73 cars will be sold back to the state at the price
-of $1,000 per vehicle.</strong></p>
+<pre class="r"><code>car_count2</code></pre>
+<pre><code>## [1] 465.1366</code></pre>
+<p><strong>About 465 cars will be sold back to the state at the price of
+$1,000 per vehicle.</strong></p>
 </div>
 <div id="ii." class="section level4">
 <h4>ii.</h4>
 <pre class="r"><code># Use R to calculate the elasticity of supply of inefficient cars.
 
-
-elasticity &lt;- ((supp(201) - supp(200))/(supp(200))) / ((201 - 200)/(200))
+elasticity &lt;- ((car_count2 - car_count1)/(car_count1))/((supp(car_count2) - (supp(car_count1)))/(supp(car_count1)))
 print(elasticity)</code></pre>
-<pre><code>## [1] 0.9239496</code></pre>
-<p><strong>the elasticity of the supply of inefficeint cars is 0.92 when
-the quantity changes from 200 to 201</strong></p>
+<pre><code>## [1] 0.8740113</code></pre>
+<p><strong>the elasticity of the supply of inefficeint cars is 0.874
+when the quantity changes from 200 to 201</strong></p>
 </div>
 <div id="iii." class="section level4">
 <h4>iii.</h4>
 <p>What are benefits of this policy to owners of old cars?</p>
-<p><strong>Their car may be worth less than $1000, so they are recieving
-more than they may have gotten otherwise</strong></p>
+<p><strong>Their car may be worth less than $1000, or they are willing
+to sell their cars for less than what the state offers, so they are
+receiving more than they may have gotten otherwise.</strong></p>
 </div>
 <div id="iv." class="section level4">
 <h4>iv.</h4>
 <p>What is the cost of this program to taxpayers?</p>
-<p><strong>They have to pay for vehicles that are not worth much and for
-people that are “freeriding”.</strong></p>
+<p><strong>They have to pay for vehicles that other people are trying to
+get rid of. The tax payer dollars are going towards individuals that
+might not need the state money and are “freeriding” </strong></p>
 </div>
 <div id="b.-1" class="section level4">
 <h4>b.</h4>
@@ -612,14 +636,14 @@ cars bought back under the program).</p>
 <pre class="r"><code># Use R to find the socially optimal number of cars to remove.
 
 marg_ben &lt;- function(Q, I3 = 1500, a3 = .04, b3 = 1.2){
-  mb = 1500 - .04*Q^1.2  
+  mb = I3 - a3*(Q^b3)  
   return(mb) 
 }
 
 
 
 
-diff2 &lt;- function(Q, I1, a1, b1, I3, a3, b3){
+diff2 &lt;- function(Q, I1=120, a1=0.3, b1=1.3, I3=1500, a3=.04, b3=1.2){
   diff = supp(Q, I1, a1, b1) - marg_ben(Q, I3, a3, b3)
   return(diff)
 }
@@ -627,10 +651,9 @@ diff2 &lt;- function(Q, I1, a1, b1, I3, a3, b3){
 
 
 
-quant2 &lt;- fzero(function(Q) diff2(Q, I1 = 120, a1 = 0.3, b1 = 1.3, I3 = 1500, a3 = .04, b3 = 1.2), 500)
-print(quant2[1])</code></pre>
-<pre><code>## $x
-## [1] 623.5703</code></pre>
+quant2 &lt;- fzero(function(Q) diff2(Q), 500)$x
+ print(quant2)</code></pre>
+<pre><code>## [1] 623.5703</code></pre>
 <p><strong>The socially optimal number of cars to remove would be 623.57
 cars. With the added environmental health benefits from removing cars,
 the demand has increased for selling cars so more individuals are wiling
@@ -641,7 +664,7 @@ to sell their cars for a higher price</strong></p>
 <pre class="r"><code># Use R to find the optimal “cash for clunkers” subsidy (which may differ from the current subsidy of $1000).
 
 
-print(marg_ben(623.5703))</code></pre>
+print(marg_ben(quant2))</code></pre>
 <pre><code>## [1] 1409.651</code></pre>
 <p><strong>The optimal “cash for clunkers” subsidy should be $1,409.65
 as the demand for trading in used cars and better health/environmental
