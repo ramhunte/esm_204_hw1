@@ -465,18 +465,20 @@ F3 &lt;- function(x, a1, b1, a2, b2){
 # iv. Use fzero to find X* and Y* for the following values of the parameters: a1=-2, b1=100, a2=3, b2=0.
 
 
-
-
-fzero(function(x) F3(x, a1=-2, b1=100, a2=3, b2=0), 10)$x</code></pre>
-<pre><code>## [1] 20</code></pre>
-<pre class="r"><code># a1 = -2
+# a1 = -2
 # b1 = 100
 # a2 = 3
 # b2=0
 # 
 # 
-# fzero(fun = F3, 10, a1=a1, b1=b1, a2=a2, b2=b2)</code></pre>
-<p>The X* = 0</p>
+# fzero(fun = F3, 10, a1=a1, b1=b1, a2=a2, b2=b2)
+
+fzero(function(x) F3(x, a1=-2, b1=100, a2=3, b2=0), 10)$x</code></pre>
+<pre><code>## [1] 20</code></pre>
+<pre class="r"><code>F1(x=20,a1=-2, b1=100 )</code></pre>
+<pre><code>## [1] 60</code></pre>
+<pre class="r"><code># Y*=60 </code></pre>
+<p>X* = 0</p>
 <p>Y* = 60</p>
 <p>This was found by taking the fzero() of the difference of supply and
 demand using the difference function that I created. Once the value at
@@ -502,8 +504,6 @@ currency is “credits” (not “dollars”). The demand curve for peanut
 butter is given by P = 400 - .05Q (where P has units “credits per jar”
 and Q has units “jars” of peanut butter). The supply of peanut butter is
 P = 20 + .05Q.</p>
-<p>What do you predict would be the equilibrium price and quantity of
-peanut butter that would be traded?</p>
 <p><strong>Demand</strong> <span class="math display">\[P = 400 -
 .05Q\]</span> <span class="math display">\[Q = 8000 - P/.05\]</span></p>
 <p><strong>Supply</strong> <span class="math display">\[P = 20 +
@@ -512,16 +512,52 @@ peanut butter that would be traded?</p>
 <p><strong>Equilibrium Price</strong> <span class="math display">\[8000
 - P/.05 = P/.05 - 400\]</span> <span class="math display">\[2P/.05 =
 8400\]</span> <span class="math display">\[P = 210\]</span></p>
+<p>What do you predict would be the equilibrium price and quantity of
+peanut butter that would be traded?</p>
+<p><strong>I would predict the equilibrium price to be 210 credits and
+the equilibrium quantity to be 3800 jars.</strong></p>
 <p>How would you measure the benefit of the new market to food banks
 that buy peanut butter? How would you measure the benefit of the new
 market to food banks that sell peanut butter?</p>
+<pre class="r"><code>#eqbrm price and quantity as calculated manually above 
+eqbm_price &lt;- 210
+eqbm_quant &lt;- 3800
+
+
+# creating a demand function
+dd &lt;- function(Q){
+ P &lt;- 400 - .05*(Q) 
+ return(P)
+}
+
+
+#creating a surplus function 
+ss &lt;- function(Q){
+ P = 20 + .05*Q 
+ return(P)
+}
+
+
+#solving the surplus area for consumer 
+CS &lt;- 0.5*((dd(Q = 0) - eqbm_price) * eqbm_quant)
+CS</code></pre>
+<pre><code>## [1] 361000</code></pre>
+<pre class="r"><code>#solving the surplus area for  producer
+
+PS &lt;- 0.5*((eqbm_price - ss(Q = 0)) * eqbm_quant)
+PS</code></pre>
+<pre><code>## [1] 361000</code></pre>
 <p><strong>You would measure the benefit of the new market to food banks
 that buy peanut butter by measuring the triangular area above the
 equilibrium price line (P star) and below demand curve. This area would
-result in the total price benefit to the food banks that buy. To measure
-the benefit of the new market to food banks that sell peanut butter, you
-would measure the triangular area below the equilibrium price line (P
-star) and above the supply curve.</strong></p>
+result in the total price benefit to the food banks that consume. In
+doing so, we see that the total benefit to the consumer (consumer
+surplus) is 361,000 credits. To measure the benefit of the new market to
+food banks that sell peanut butter, you would measure the triangular
+area below the equilibrium price line (P star) and above the supply
+curve. This also results in a total of 361,000 credits. Both the
+consumer and the producer are benefiting the same from trading
+equilibrium price and quantity of peanut butter. </strong></p>
 </div>
 <div id="b." class="section level4">
 <h4>b.</h4>

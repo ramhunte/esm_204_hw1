@@ -147,7 +147,7 @@ algebra was used to confirm that the answer is correct
 Recall the NPR story, where food banks around the country can buy and sell
 surplus food in a new kind of market. Consider the supply and demand for peanut butter (the story indicated that it is particularly valuable in this market). In this market there are food banks who have surplus peanut butter and food banks that want more peanut butter. The currency is “credits” (not “dollars”). The demand curve for peanut butter is given by P = 400 - .05Q (where P has units “credits per jar” and Q has units “jars” of peanut butter). The supply of peanut butter is P = 20 + .05Q. 
 
-What do you predict would be the equilibrium price and quantity of peanut butter that would be traded? 
+
 
 
 **Demand**
@@ -170,12 +170,50 @@ $$8000 - P/.05 = P/.05 - 400$$
 $$2P/.05 = 8400$$
 $$P = 210$$
 
+What do you predict would be the equilibrium price and quantity of peanut butter that would be traded? 
+
+**I would predict the equilibrium price to be 210 credits and the equilibrium quantity to be 3800 jars.**
+
+
 
 How would you measure the benefit of the new market to food banks that buy peanut butter? How would you measure the benefit of the new market to food banks that sell peanut butter?
 
-**You would measure the benefit of the new market to food banks that buy peanut butter by measuring the triangular area above the equilibrium price line (P star) and below demand curve. This area would result in the total price benefit to the food banks that buy. To measure the benefit of the new market to food banks that sell peanut butter, you would measure the triangular area below the equilibrium price line (P star) and above the supply curve.**
 
 
+```{r}
+#eqbrm price and quantity as calculated manually above 
+eqbm_price <- 210
+eqbm_quant <- 3800
+
+
+# creating a demand function
+dd <- function(Q){
+ P <- 400 - .05*(Q) 
+ return(P)
+}
+
+
+#creating a surplus function 
+ss <- function(Q){
+ P = 20 + .05*Q 
+ return(P)
+}
+
+
+#solving the surplus area for consumer 
+CS <- 0.5*((dd(Q = 0) - eqbm_price) * eqbm_quant)
+CS
+
+
+#solving the surplus area for  producer
+
+PS <- 0.5*((eqbm_price - ss(Q = 0)) * eqbm_quant)
+PS
+
+```
+
+
+**You would measure the benefit of the new market to food banks that buy peanut butter by measuring the triangular area above the equilibrium price line (P star) and below demand curve. This area would result in the total price benefit to the food banks that consume. In doing so, we see that the total benefit to the consumer (consumer surplus) is 361,000 credits. To measure the benefit of the new market to food banks that sell peanut butter, you would measure the triangular area below the equilibrium price line (P star) and above the supply curve. This also results in a total of 361,000 credits. Both the consumer and the producer are benefiting the same from trading equilibrium price and quantity of peanut butter. **
 
 
 #### b. 
